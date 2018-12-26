@@ -19,42 +19,42 @@ public class ExportInfo extends BaseRowModel {
     @ExcelProperty(value = "地址",index = 3)
     private String address;
 
-    @ExcelProperty(value = "姓名" ,index = 0)
+    @ExcelProperty(value = "姓名" ,index = 4)
     private String name1;
 
-    @ExcelProperty(value = "年龄",index = 1)
+    @ExcelProperty(value = "年龄",index = 5)
     private String age1;
 
-    @ExcelProperty(value = "邮箱",index = 2)
+    @ExcelProperty(value = "邮箱",index = 6)
     private String email1;
 
-    @ExcelProperty(value = "地址",index = 3)
+    @ExcelProperty(value = "地址",index = 7)
     private String address1;
 
 
-    @ExcelProperty(value = "姓名" ,index = 0)
+    @ExcelProperty(value = "姓名" ,index = 8)
     private String name2;
 
-    @ExcelProperty(value = "年龄",index = 1)
+    @ExcelProperty(value = "年龄",index = 9)
     private String age2;
 
-    @ExcelProperty(value = "邮箱",index = 2)
+    @ExcelProperty(value = "邮箱",index = 10)
     private String email2;
 
-    @ExcelProperty(value = "地址",index = 3)
+    @ExcelProperty(value = "地址",index =11)
     private String address2;
 
 
-    @ExcelProperty(value = "姓名" ,index = 0)
+    @ExcelProperty(value = "姓名" ,index = 12)
     private String name4;
 
-    @ExcelProperty(value = "年龄",index = 1)
+    @ExcelProperty(value = "年龄",index = 13)
     private String age4;
 
-    @ExcelProperty(value = "邮箱",index = 2)
+    @ExcelProperty(value = "邮箱",index = 14)
     private String email4;
 
-    @ExcelProperty(value = "地址",index = 3)
+    @ExcelProperty(value = "地址",index = 15)
     private String address4;
 
 

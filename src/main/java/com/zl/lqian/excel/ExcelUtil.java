@@ -2,6 +2,8 @@ package com.zl.lqian.excel;
 
 import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.context.AnalysisContext;
+import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.excel.metadata.BaseRowModel;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
@@ -12,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,8 +66,21 @@ public class ExcelUtil {
      */
     public static List<Object> readExcel(MultipartFile excel, BaseRowModel rowModel, int sheetNo,
                                          int headLineNum) {
+        List<Object> resultList = new ArrayList<>();
         ExcelListener excelListener = new ExcelListener();
-        ExcelReader reader = getReader(excel, excelListener);
+        ExcelReader reader = getReader(excel, new AnalysisEventListener() {
+            @Override
+            public void invoke(Object object, AnalysisContext context) {
+
+                resultList.add(object);
+            }
+
+            @Override
+            public void doAfterAllAnalysed(AnalysisContext context) {
+
+                System.out.println("处理结束");
+            }
+        });
         if (reader == null) {
             return null;
         }
@@ -134,7 +150,7 @@ public class ExcelUtil {
      * @param excelListener new ExcelListener()
      */
     private static ExcelReader getReader(MultipartFile excel,
-                                         ExcelListener excelListener) {
+                                         AnalysisEventListener excelListener) {
         String filename = excel.getOriginalFilename();
         if (filename == null || (!filename.toLowerCase().endsWith(".xls") && !filename.toLowerCase().endsWith(".xlsx"))) {
             throw new ExcelException("文件格式错误！");

@@ -38,7 +38,10 @@ public class ExcelController {
     @RequestMapping(value = "readExcel", method = RequestMethod.POST)
     public Object readExcel(MultipartFile excel,  @RequestParam(defaultValue = "1") Integer sheetNo,
                             @RequestParam(defaultValue = "1") Integer headLineNum) {
-        return ExcelUtil.readExcel(excel, new ImportInfo(), sheetNo, headLineNum);
+          Long start = System.currentTimeMillis();
+         ExcelUtil.readExcel(excel, new ImportInfo(), sheetNo, headLineNum);
+        System.out.println(System.currentTimeMillis()- start);
+         return null;
     }
 
     /**
@@ -71,7 +74,7 @@ public class ExcelController {
 
     private List<ExportInfo> getList() {
         List<ExportInfo> list = new ArrayList<>();
-        for (int i = 0 ; i < 5000; i ++) {
+        for (int i = 0 ; i < 2500; i ++) {
             ExportInfo model1 = new ExportInfo();
             model1.setName("zhanglei");
             model1.setAge("19");
